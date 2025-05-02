@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <title>2373030-Prak9-Novan Rafiathadari-Soal 2</title> 
+    <style> 
+      table { 
+        border-collapse: collapse; 
+        width: 400px;
+      }
+
+      td {
+        border: 1px solid;
+        padding: 8px;
+        text-align: left;
+      }
+
+      .row1 { background-color: #a3c2ff; }
+      .row2 { background-color: #fbbca5; }
+      .row3 { background-color: #a3c2ff; }
+      .row4 { background-color: #fbbca5; }
+      .row5 { background-color: #a3c2ff; }
+
+      .c3 {
+        background-color: #ccffaa !important;
+      }
+    </style>
+    <script>
+      function highlight(id) {
+        let row = document.getElementById(id);
+        if (!row.hasAttribute("data-clicked")) {
+          row.className = "c3";
+        }
+      }
+
+      function unhighlight(id, originalClass) {
+        let row = document.getElementById(id);
+        if (!row.hasAttribute("data-clicked")) {
+          row.className = originalClass;
+        }
+      }
+
+      function toggleClick(id) {
+        let row = document.getElementById(id);
+        row.setAttribute("data-clicked", "true");
+        row.className = "c3";
+      }
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr style="background-color: #739a5f;">
+        <td>Position</td>
+        <td>Programming Language</td>
+        <td>Ratings</td>
+      </tr>
+      <tr id="clickme1" class="row1"
+          onclick="toggleClick('clickme1')"
+          onmouseover="highlight('clickme1')"
+          onmouseout="unhighlight('clickme1', 'row1')">
+        <td>1</td><td>C</td><td>18.058%</td>
+      </tr>
+      <tr id="clickme2" class="row2"
+          onclick="toggleClick('clickme2')"
+          onmouseover="highlight('clickme2')"
+          onmouseout="unhighlight('clickme2', 'row2')">
+        <td>2</td><td>Java</td><td>18.051%</td>
+      </tr>
+      <tr id="clickme3" class="row3"
+          onclick="toggleClick('clickme3')"
+          onmouseover="highlight('clickme3')"
+          onmouseout="unhighlight('clickme3', 'row3')">
+        <td>3</td><td>C++</td><td>9.707%</td>
+      </tr>
+      <tr id="clickme4" class="row4"
+          onclick="toggleClick('clickme4')"
+          onmouseover="highlight('clickme4')"
+          onmouseout="unhighlight('clickme4', 'row4')">
+        <td>4</td><td>PHP</td><td>9.662%</td>
+      </tr>
+      <tr id="clickme5" class="row5"
+          onclick="toggleClick('clickme5')"
+          onmouseover="highlight('clickme5')"
+          onmouseout="unhighlight('clickme5', 'row5')">
+        <td>5</td><td>(Visual) Basic</td><td>6.392%</td>
+      </tr>
+    </table>
+  </body>
+</html>

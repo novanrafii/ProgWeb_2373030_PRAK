@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2373030-Prak9-Novan Rafiathadari-Soal 3</title>
+    <style>
+      input,
+      select,
+      button {
+        margin: 5px;
+      }
+    </style>
+    <script>
+        let dataArray = [];
+        function addAndProcess() {
+          const input = document.getElementById("dataInput");
+          const operasi = document.getElementById("operasiSelect").value;
+          const value = parseInt(input.value);
+  
+          if (!isNaN(value) && operasi !== "Hapus") {
+            dataArray.push(value);
+          }
+  
+          input.value = "";
+          input.focus();
+  
+          let result = "";
+  
+          if (operasi === "Display") {
+            result = dataArray.join(", ");
+          } else if (operasi === "Count") {
+            result = dataArray.length;
+          } else if (operasi === "Sum") {
+            result = dataArray.reduce((a, b) => a + b, 0);
+          } else if (operasi === "Average") {
+            result = dataArray.length
+              ? (dataArray.reduce((a, b) => a + b, 0) / dataArray.length).toFixed(
+                  2
+                )
+              : "0";
+          } else if (operasi === "Max") {
+            result = dataArray.length ? Math.max(...dataArray) : "";
+          } else if (operasi === "Min") {
+            result = dataArray.length ? Math.min(...dataArray) : "";
+          } else if (operasi === "Ganjil") {
+            result = dataArray.filter((x) => x % 2 !== 0).join(", ");
+          } else if (operasi === "Genap") {
+            result = dataArray.filter((x) => x % 2 === 0).join(", ");
+          } else if (operasi === "Hapus") {
+            dataArray = [];
+            result = "Data dihapus";
+          } else {
+            result = "Pilih operasi terlebih dahulu.";
+          }
+  
+          document.getElementById("hasil").value = result;
+        }
+      </script>
+  </head>
+  <body>
+    <label>Data</label>
+    <input type="text" id="dataInput" /> <br>
+    <button onclick="addAndProcess()">Add</button>
+    <select id="operasiSelect">
+      <option value="">Pilih Operasi</option>
+      <option value="Display">Display</option>
+      <option value="Count">Count</option>
+      <option value="Sum">Sum</option>
+      <option value="Average">Average</option>
+      <option value="Max">Max</option>
+      <option value="Min">Min</option>
+      <option value="Ganjil">Ganjil</option>
+      <option value="Genap">Genap</option>
+      <option value="Hapus">Hapus</option>
+    </select>
+    <br />
+    <label>Hasil</label>
+    <input type="text" id="hasil" readonly />
+  </body>
+</html>
