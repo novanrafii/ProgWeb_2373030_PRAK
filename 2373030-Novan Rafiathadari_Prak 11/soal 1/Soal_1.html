@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+  <head>
+    <title>2373030-Prak11-Novan Rafiathadari-Soal 1</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: black;
+        color: white;
+      }
+      tr.kelasA {
+        background-color: #ffffcc;
+      }
+      tr.kelasB {
+        background-color: #ccffaa;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h3>
+      Selamat! Berikut adalah Daftar Mahasiswa yang mendapat Nilai A Pemrograman
+      Web SI Tahun Ajaran 2023/2024
+    </h3>
+
+    <form id="filterForm">
+      <input type="radio" name="kelas" value="all" checked /> All<br />
+      <input type="radio" name="kelas" value="A" /> Kelas A<br />
+      <input type="radio" name="kelas" value="B" /> Kelas B<br />
+      <button type="button" id="searchBtn">Search</button>
+    </form>
+
+    <br />
+    <table id="dataTable">
+      <tr>
+        <th>NRP</th>
+        <th>NAMA</th>
+        <th>KELAS</th>
+        <th>NILAI AKHIR</th>
+      </tr>
+    </table>
+
+    <script>
+      function loadData() {
+        $("#dataTable tr:gt(0)").remove();
+        const kelas = $(":radio[name='kelas']:checked").val();
+        let url = "";
+
+        if (kelas === "A") url = "nilaiA.js";
+        else if (kelas === "B") url = "nilaiB.js";
+        else url = "nilai.js";
+        url += "?t=" + new Date().getTime();
+        $.getScript(url)
+          .done(function () {
+            if (typeof data === "undefined") {
+              alert("Data tidak tersedia di file: " + url);
+              return;
+            }
+            $.each(data, function (index, mhs) {
+              const rowClass = mhs.kelas === "A" ? "kelasA" : "kelasB";
+              const row = `<tr class="${rowClass}">
+                           <td>${mhs.nrp}</td>
+                           <td>${mhs.nama}</td>
+                           <td>${mhs.kelas}</td>
+                           <td>${mhs.nilaiakhir}</td>
+                         </tr>`;
+              $("#dataTable").append(row);
+            });
+          })
+          .fail(function () {
+            alert("Gagal memuat data dari file: " + url);
+          });
+      }
+      $(document).ready(function () {
+        $("#searchBtn").click(loadData);
+        $("#searchBtn").click();
+      });
+    </script>
+  </body>
+</html>
