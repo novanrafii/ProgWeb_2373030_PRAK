@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2373030-Prak12-Novan Rafiathadari-Soal 1</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 500px;
+        border: 1px solid;
+        margin: auto;
+      }
+
+      .table-header {
+        background-color: darkgrey;
+        text-align: center;
+      }
+
+      .table-header font {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      td {
+        padding: 10px;
+        border: 1px solid;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      select {
+        width: 90%;
+        padding: 5px;
+        margin-top: 5px;
+      }
+
+      .button-row {
+        text-align: right;
+        padding-right: 20px;
+      }
+
+      input[type="submit"],
+      input[type="reset"] {
+        padding: 6px 12px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="soal_1.php" method="POST">
+      <table>
+        <tr class="table-header">
+          <td colspan="2"><font>Add Profile</font></td>
+        </tr>
+
+        <tr>
+          <td>Nama</td>
+          <td><input type="text" name="name" /></td>
+        </tr>
+
+        <tr>
+          <td>Position</td>
+          <td>
+            <select name="position">
+              <optgroup label="Programmer">
+                <option selected>Senior Programmer</option>
+                <option>Junior Programmer</option>
+              </optgroup>
+              <optgroup label="System Analyst">
+                <option>Senior Analyst</option>
+                <option>Junior Analyst</option>
+              </optgroup>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Password</td>
+          <td><input type="password" name="password" /></td>
+        </tr>
+
+        <tr>
+          <td>Confirm Password</td>
+          <td><input type="password" name="confirmPassword" /></td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="button-row">
+            <input type="reset" value="Reset" />
+            <input type="submit" value="Save" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
