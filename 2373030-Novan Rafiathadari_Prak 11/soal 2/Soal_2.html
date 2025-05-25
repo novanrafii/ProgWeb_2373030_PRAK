@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+  <head>
+    <title>2373030-Prak11-Novan Rafiathadari-Soal 2</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #container {
+        width: 700px;
+        border: 1px solid #000;
+        padding: 15px;
+        margin-top: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+      }
+      .section {
+        border: 1px solid #999;
+        padding: 8px;
+        margin-bottom: 10px;
+      }
+      h3 {
+        text-align: center;
+        color: blue;
+      }
+      a {
+        color: blue;
+        text-decoration: underline;
+      }
+      .course {
+        margin-bottom: 20px;
+      }
+      footer {
+        text-align: center;
+        font-size: 0.9em;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+        margin-top: 10px;
+      }
+      #look {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="section" id="title-section">
+        <div class="section-title">Title</div>
+      </div>
+      <div class="section" id="content-section">
+        <div class="section-title">Content</div>
+      </div>
+      <div class="section" id="generator-section">
+        <div class="section-title">Generator</div>
+      </div>
+    </div>
+
+    <button id="look">Look</button>
+
+    <script>
+      document.getElementById("look").addEventListener("click", function () {
+        fetch("SIJson.txt")
+          .then((response) => {
+            if (!response.ok) throw new Error("Gagal mengambil file");
+            return response.text();
+          })
+          .then((text) => {
+            const json = JSON.parse(text);
+            tampilkanData(json);
+          })
+          .catch((err) => {
+            alert("Gagal memuat data JSON: " + err.message);
+          });
+      });
+
+      function tampilkanData(data) {
+        const titleSection = document.getElementById("title-section");
+        const contentSection = document.getElementById("content-section");
+        const generatorSection = document.getElementById("generator-section");
+
+        titleSection.innerHTML = `<h3><a href="${data.link}">${data.title}</a></h3>`;
+
+        let contentHTML = ``;
+        data.items.forEach((item) => {
+          contentHTML += `
+          <div class="course">
+            <a href="${item.link}">${item.title}</a><br/>
+            By : ${item.author} / <i>${item.published}</i>
+            <p>${item.description}</p>
+            Universitas : <a href="${item.universitas.m}">Click Here</a><br/>
+            Tag(s) : ${item.tags}
+          </div>
+        `;
+        });
+        contentSection.innerHTML = contentHTML;
+
+        generatorSection.innerHTML = `©${data.generator}`;
+      }
+    </script>
+  </body>
+</html>

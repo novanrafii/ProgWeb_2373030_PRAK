@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2373030-Prak10-Novan Rafiathadari-Soal 3</title>
+    <style>
+      div.box {
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        float: left;
+        border: 2px solid blue;
+        text-align: center;
+      }
+      .container {
+        width: fit-content;
+        padding: 10px;
+      }
+      button {
+        margin-bottom: 10px;
+        display: block;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+  </head>
+  <body>
+    <div class="container">
+      <button>Change colors</button>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+    <script>
+        $(".box").click(function () {
+          $(".box").removeAttr("id");
+          $(this).css("background-color", "red").attr("id", "stop");
+        });
+        $("button").click(function () {
+          $(".box").each(function () {
+            if ($(this).attr("id") === "stop") {
+              return false;
+            }
+            $(this).css("background-color", "yellow");
+          });
+        });
+      </script>
+  </body>
+</html>

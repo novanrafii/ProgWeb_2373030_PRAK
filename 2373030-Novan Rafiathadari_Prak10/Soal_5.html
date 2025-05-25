@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2373030-Prak10-Novan Rafiathadari-Soal 5</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+
+      #search {
+        width: 300px;
+        padding: 8px;
+        font-size: 14px;
+      }
+
+      ul {
+        margin-top: 10px;
+        padding-left: 0;
+      }
+
+      li {
+        list-style-type: none;
+        padding: 4px;
+      }
+
+      .highlight {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="search" placeholder="Cari perusahaan IT..." />
+    <ul id="companyList">
+      <li>Sun Microsystem</li>
+      <li>Apache Software Foundation</li>
+      <li>Oracle Coorporation</li>
+      <li>International Bussiness Machines</li>
+      <li>Microsoft Coorporation</li>
+      <li>Apple Inc</li>
+      <li>Sap Ag</li>
+      <li>Accenture</li>
+      <li>Computer Sciences Coorporation</li>
+      <li>Google</li>
+      <li>Softbank</li>
+      <li>Yahoo</li>
+    </ul>
+    <script>
+      $("#search").on("keyup", function () {
+        var input = $(this).val().toLowerCase();
+
+        $("#companyList li").each(function () {
+          var text = $(this).text();
+          if (input !== "" && text.toLowerCase().includes(input)) {
+            $(this).addClass("highlight");
+          } else {
+            $(this).removeClass("highlight");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

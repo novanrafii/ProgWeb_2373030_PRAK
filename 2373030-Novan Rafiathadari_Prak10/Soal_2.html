@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>2373030-Prak10-Novan Rafiathadari-Soal 2</title>
+  <style>
+    body {
+      padding: 30px;
+      font-family: Arial, sans-serif;
+    }
+
+    .box {
+      border: 1px solid #888;
+      width: 300px;
+      padding: 10px;
+    }
+
+    input[type="text"] {
+      width: 160px;
+      padding: 3px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 3px 8px;
+      margin-left: 3px;
+    }
+
+    .name {
+      margin: 2px 0;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#addBtn").click(function () {
+        const inputName = $("#nameInput").val().trim();
+        if (inputName) {
+          $("<div class='name'></div>").text(inputName).appendTo("#list");
+          $("#nameInput").val('');
+        }
+      });
+
+      $("#searchBtn").click(function () {
+        const keyword = $("#nameInput").val().trim();
+        $(".name").removeClass("underline");
+
+        if (keyword) {
+          $(".name:contains('" + keyword + "')").each(function () {
+            $(this).addClass("underline");
+          });
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+
+  <div class="box">
+    <input type="text" id="nameInput">
+    <button id="addBtn">Add</button>
+    <button id="searchBtn">Search</button>
+    
+    <div id="list">
+      <div class="name">John Resig</div>
+      <div class="name">George Martin</div>
+      <div class="name">Malcom John Sinclair</div>
+      <div class="name">J. Ohn</div>
+    </div>
+  </div>
+
+</body>
+</html>

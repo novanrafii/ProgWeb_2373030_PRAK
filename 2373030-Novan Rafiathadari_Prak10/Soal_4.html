@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2373030-Prak10-Novan Rafiathadari-Soal 4</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        margin: 20px;
+      }
+      td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #000;
+      }
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin: 5px;
+      }
+      hr {
+        margin: 10px 0;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <input class="header" type="checkbox" /><br />
+          <hr />
+          <input class="body" type="checkbox" /><br />
+          <input class="body" type="checkbox" /><br />
+          <input class="body" type="checkbox" /><br />
+          <input class="body" type="checkbox" /><br />
+          <input class="body" type="checkbox" /><br />
+        </td>
+      </tr>
+    </table>
+
+    <script>
+      $(".header").click(function () {
+        var flag = $(this).is(":checked");
+        $("input:checkbox.body").prop("checked", flag);
+      });
+      $(".body").click(function () {
+        var total = $("input:checkbox.body").length;
+        var checked = $("input:checkbox.body:checked").length;
+        $(".header").prop("checked", total === checked);
+      });
+    </script>
+  </body>
+</html>
